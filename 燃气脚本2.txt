@@ -1,0 +1,83 @@
+BEGIN
+  declare SN varchar(50);
+	declare ND double;
+	declare KG int;
+	declare WD double;
+	declare DT datetime;
+	declare E1 int;
+	declare E2 int;
+	declare E3 int;
+	declare E4 int;
+	declare E5 int;
+	declare E6 int;
+	declare E7 int;
+	declare E8 int;
+	declare CGQSM int;
+	declare ComPany int;
+	declare ComPanyName varchar(50);
+	declare Namea varchar(50);
+	declare DLJD float;
+	declare DLWD float;
+	declare SBName varchar(50);
+	declare Real_Name varchar(50);
+	declare Address varchar(50);
+	declare Tel varchar(50);
+	declare CSType varchar(50);
+	
+	SELECT s.AreaID,a.AreaName,s.CSType into @ComPany,@ComPanyName,@CSType From tSB s,tAgency a WHERE s.AreaID=a.AreaID AND s.SN=new.SN;
+	SELECT DISTINCT  r.Name,c.JD,c.WD into @Name,@DLJD,@DLWD FROM tRQYH r,tConfig c WHERE r.ID=c.RQYHID AND c.SN=new.SN;
+	SELECT  Real_Name,Address,Tel into @Real_Name,@Address,@Tel FROM tRQYH WHERE Name=Namea  limit 1;
+	
+	#判断温度是否为55
+	if new.WD=55 then
+		begin
+		 set @WD=37;
+		end;
+	end if;
+	
+	set @SBName=(select  Remark from tConfig where SN=new.SN order by DT desc limit 1	);
+	
+	#判断设备名称是否为空，如果为空就不需要执行触发器
+	if SBName is not null then
+	begin
+	 
+	
+	delete from tRQ_Real where SN=new.SN ;
+	
+    insert into tRQ_Real(SN,ND,KG,WD,DT,E1,E2,E3,E4,E5,E6,E7,E8,CGQSM,Company,ComPanyName,Name,DLJD,DLWD,SBName,Real_Name,Address,Tel,CSType)values(new.SN,new.ND,new.KG,new.WD,new.DT,new.E1,new.E2,new.E3,new.E4,new.E5,new.E6,new.E7,new.E8,new.CGQSM,ComPany,ComPanyName,Name,DLJD,DLWD,SBName,Real_Name,Address,Tel,CSType);
+    end;
+		end if;
+    
+    #删除报警实时数据,保证之前报警的现在不报警的还存在信息,这是不符合业务的,只保留最新报警.
+    DELETE FROM tErrorMsg WHERE SN=new.SN;
+    
+    #浓度报警
+    if new.ND>=5 then
+    begin
+      INSERT INTO  tErrorMsg(SN,ErrorMsg,DT) values (new.SN,'浓度报警',new.DT);
+    end;
+    end if;
+    #通过标识位判断报警
+    if new.E5=1 then 
+    begin
+      INSERT INTO  tErrorMsg(SN,ErrorMsg,DT) values (new.SN,'浓度报警',new.DT);
+      INSERT INTO  tErrorMsgHis(SN,ErrorMsg,DT) values (new.SN,'浓度报警',new.DT);
+    end;
+		end if;
+    
+    #故障报警
+    #if(@E1=1)
+    #begin
+   #  INSERT INTO tErrorMsg(SN,ErrorMsg,DT) VALUES(@SN,'故障报警',@DT)
+    #   INSERT INTO  tErrorMsgHis(SN,ErrorMsg,DT) values (@SN,'故障报警',@DT)
+   #end
+    
+
+    #设备操作日志
+    if new.KG =0 then #关阀
+    begin
+     INSERT INTO tOpen(SN,OpenName,Msg,DT,OpenType)values(new.SN,'设备','设备自动断开',new.DT,2);
+     
+    end;
+		end if;
+END
