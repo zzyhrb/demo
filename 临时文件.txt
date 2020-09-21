@@ -1,0 +1,15 @@
+﻿git@github.com:zzyhrb/super.git
+
+360532178@qq.com
+
+
+密钥命令
+ssh-keygen -t rsa -C "your_email@youremail.com"
+
+
+
+
+邀请您使用ToDesk 进行远程协助
+我的被控ID：241 142 592 密码：487064
+
+ToDesk下载地址 www.todesk.com
