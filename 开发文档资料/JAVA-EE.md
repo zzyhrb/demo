@@ -205,7 +205,127 @@
 
 
 
+## 顺序结构
 
+
+
+```java
+System.out.println("1");
+System.out.println("2");
+System.out.println("3");
+
+```
+
+## 选择结构
+
+* if 但选择结构
+
+  ```java
+  if(布尔表达式){
+      //如果布尔值为true 执行
+  }
+      
+  ```
+
+  
+
+* switch 多选择结构
+
+  1. 多选择结构还有一个实现饿方式就是switch case 语句。
+
+  2. switch case 语句判断一个变量与一系列值中某个值是否相等，每个值称为一个分支。
+
+  3. switch 语句中的变量类型可以是：
+
+     * byte,short.int 或者 char.
+     * 从java 7 开始
+     * switch 支持字符串String 类型
+     * 同时case 标签必须为字符串常量或字面量。
+
+     ![switch图片](F:\gitproject\demo\开发文档资料\images\java\switch-01.png)
+
+
+
+ 	## 循环结构
+
+* while 循环 
+* do.....while 循环
+* for 循环
+* 在java5中引入了一种主要用于数组增强的for循环。
+
+![图片](F:\gitproject\demo\开发文档资料\images\java\while循环-01.png)
+
+```java 
+		int i=0;
+		int sum=0;
+		while(i<=100){
+			sum +=i;
+			System.out.println(i+"=="+sum);
+            i++;
+		}
+```
+
+ ![do...while循环图片](F:\gitproject\demo\开发文档资料\images\java\dowhile-01.png)
+
+```java
+    int i=0;
+    int sum=0;
+    do{
+        sum =sum+i;
+        i++;
+    }while(i<=100);
+    System.out.println(sum);
+```
+
+* for 循环
+
+  ```java
+  		//联系1，计算0-100之间的奇数和偶数的和
+  		int jsum=0;
+  		int osum=0;
+  		
+  		for(int i=0;i<=100;i++){
+  			if(i%2 !=0){
+  				jsum +=i;
+  			}
+  			if(i%2 ==0){
+  				osum +=i;
+  			}
+  			
+  		}
+  		System.out.println("奇数和是="+jsum+"偶数和是="+osum+"总和是="+(jsum+osum));
+  
+  
+  
+  		//打印三角形
+  		for(int i=1;i<=5;i++){
+  			for(int j=5;j>=i;j--){
+  				System.out.print(" ");
+  			}
+  			for(int j=1;j<=i;j++){
+  				System.out.print("*");
+  			}
+  			for(int j=1;j<i;j++){
+  				System.out.print("*");
+  			}
+  			System.out.println();
+  		}
+  		
+  ```
+
+* 增强for循环
+
+  ```java
+  
+  ```
+
+* brean contione
+
+  ```java
+  
+  ```
+
+  
 
 
 
