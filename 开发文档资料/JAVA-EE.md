@@ -371,5 +371,38 @@ systemctl status docker
 
   
 
+# 一一零 Redis 安装配置
+
+![图片](F:\gitproject\demo\开发文档资料\images\redis-01.png)
+
+
+
+## 1.安装
+
+```jaiva
+1.创建挂在文件目录 [root] #mkdir -p /mydata/redis/conf 
+2.创建配置文件 【root】# touch redis.conf 
+3.【root】#docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \ > -v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \ > -d redis redis-server /etc/redis/redis.conf 
+4.查看运行状态 【root】#docker ps
+```
+
+## 2.测试
+
+```javascript
+[root@iZ2zedq4zbdzwebsgsxi9bZ conf]# ls redis.conf [root@iZ2zedq4zbdzwebsgsxi9bZ conf]# docker exec -it redis redis-cli 127.0.0.1:6379> set a b OK 127.0.0.1:6379> get a "b" 127.0.0.1:6379>
+```
+
+## 3.配置Redis 持久化
+
+```javascript
+1.查看挂载路径 【root】# pwd
+2.修改配置文件 【root】# vi redi.conf 
+3.如下图【root】# appendonly yew
+```
+
+![图片](F:\gitproject\demo\开发文档资料\images\redis-02.png)
+
+
+
 
 
