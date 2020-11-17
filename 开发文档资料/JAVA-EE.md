@@ -255,15 +255,45 @@
    >npm install
    ```
 
-   
-
 * 运行项目
 
   ```java 
   npm  run dev
   ```
 
+* 遇到问题没有Python的环境
 
+  1. 之前没有装过这个 python，而且要求是 2.7 版本 。
+
+  2. 自己来安装吧。给Path添加两个环境变量。
+
+     
+
+  ```java
+  C:\Python27
+  C:\Python27\Scripts
+  ```
+
+* node-sass报错
+
+  ```java
+  npm ERR! node-sass@4.9.0 postinstall: `node scripts/build.js`
+  npm ERR! Exit status 1
+  npm ERR!
+  npm ERR! Failed at the node-sass@4.9.0 postinstall script.
+  npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+  ```
+
+* 解决办法是，先删除 ，再安装 。
+
+  ```
+  npm uninstall node-sass
+  npm install node-sass
+  
+  npm run dev 的正常结果
+  ```
+
+  
 
 
 ## 3. Es6(入门)
@@ -282,10 +312,16 @@
 
 * let使用
 
-  ```
   
-  ```
+  
+* 对象属性简写：
 
+  ```
+  var json={"name":name,"age":age}
+  var json={name,age}
+  ```
+```
+  
   
 
 
@@ -308,7 +344,7 @@
 
    ```java
    ssh-keygen -t rsa -C "你的邮箱@xxx.com"
-   ```
+```
 
 * 查看  公钥内容
 
