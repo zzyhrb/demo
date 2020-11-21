@@ -8,6 +8,26 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 一 MarkDown学习
 
 ## 1.标题
@@ -622,6 +642,95 @@ public static void main(String[] args) {
 
 
 
+## 13. java 面向对象
+
+### 1. 什么是面向对象
+
+![图片](F:\gitproject\demo\开发文档资料\images\java\面向对象01.png)
+
+
+
+![图片02](F:\gitproject\demo\开发文档资料\images\java\面向对象02.png)
+
+### 2.构造器
+
+
+
+
+
+## 14.封装
+
+​	![图片](F:\gitproject\demo\开发文档资料\images\java\封装01.png)
+
+
+
+## 15.继承
+
+ ![图片](F:\gitproject\demo\开发文档资料\images\java\继承01.png)
+
+
+
+	### 1.supper注意点
+
+* supper 调用父类的构造方法，必须在构造方法的第一个
+* supper 必须只能出现在子类的方法或构造方法中
+* supper 和 this 不能同时调用构造方法
+
+
+
+### 2.this:
+
+* 代表对象不同：
+  1. this :本身调用这个对象
+  2. supper : 代表父类对象应用
+* 前提
+  1. this : 没有继承也可以使用
+  2. supper : 只能在继承条件下才能使用
+* 构造方法
+  1. this() : 本类的构造
+  2. supper(): 父类的构造
+
+
+
+
+
+
+
+## 16.重写
+
+### 1. 注解
+
+*  重写是方法的重写，和属性无关。
+
+* 需要有继承关系，子类重写父类的方法
+
+  1. 方法名必须相同
+  2. 参数列表必须相同
+  3. 修饰符： 范围可以扩大不能缩小，
+  4. 抛出的异常：范围，可以被缩小，但不能扩大。
+
+* 快捷键
+
+  ​	Alt + Insert
+
+## 17.多态
+
+### 1.多态
+
+ ![图片](F:\gitproject\demo\开发文档资料\images\java\多态01.png)
+
+### 2. 多态注意事项
+
+* 多态是方法的多态，属性没有多态
+* 父类和子类，有联系，类型转换异常！
+* 存在条件：继承关系，方法需要重写，父类引用指向子类对象！ father  f1 =new son()
+  1. static 方法 属于类，它不属于实例。
+  2. final  常量
+  3. private 方法：
+
+## 18.接口
+
+![图片](F:\gitproject\demo\开发文档资料\images\java\接口01.png)
 
 
 
@@ -665,16 +774,9 @@ public static void main(String[] args) {
 
 
 
+# 三 java多线程
 
-
-
-
-
-
-
-
-
-
+## 1 .
 
 
 
@@ -774,7 +876,7 @@ public static void main(String[] args) {
 * 新建页面快捷键(快速生成html模板页)
 
   ```jav 
-  CTRL + !
+  Shift + !    
   ```
 
 
@@ -783,17 +885,174 @@ public static void main(String[] args) {
 
 * let使用
 
-  
-  
 * 对象属性简写：
 
-  ```
+  ```javascript
   var json={"name":name,"age":age}
-  var json={name,age}
+  var json={name,age
+  
+  //获取数组
+  let arr =[1,2,3];
+  let [a,b,c] = arr;
+  console.log(a,b,c);
+  
+  //对象
+  const person ={
+           name : "zzy",
+           age: 13,
+           language:['java','js','css']
+  
+      }
+      //对象解构  
+      const {name:abc,age,language} = person;
+      console.log(name,age,language);
+  
+  
+  
   ```
+  
+* 对象扩展
+
+  ```javascript
+  let str ="Hello Word";
+  console.log(str.startsWith("Hello"));  
+  console.log(str.endsWith("rd"));  
+  console.log(str.includes("llo"));  
+  ```
+
+* 字符串模板
+
+  ```javasc
+  //字符串模板
+     let ss =`<div>
+                  <span>dfkjfks</span>
+              </div>
+              `
+      console.log(ss);
+  ```
+
+  
+
+* 字符串插入变量表达式。变量名写在${} 中，
+
+  ```javascript
+  let  names='今天';
+  function run(){
+      return "你好";
+  }
+  let info =`我叫,${names},我说${run()}`
+  console.log(info)
+  ```
+
+## 3. 函数
+
+ ### 1.使用
+
+```javascript
+//在Es6 以前，我们无法给一个函数参数设置默认值，只能采用变通的写法。
+function add(a,b){
+    //判断b 是否为空，为空就给默认值
+    b =b || 1;
+    return a +b ;
+}
+console.log(add(3));
+
+//现在可以这么写 直接给参数写上默认值，没传就自动使用默认值
+function add4(a,b=1){
+    return a + b;
+}
+console.log(add4(2))
+
+//不定参数
+function fun(... values){
+    console.log(values.length)
+}
+fun(1,2,4)
+fun(1)
+
+
+//箭头函数
+var sum =function (a,b){
+    return a +b;
+}
+
+var sum2 =(a,b) => a+b;
+
+console.log(sum2(1,2));
+
 ```
-  
-  
+
+
+
+
+
+​	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -809,12 +1068,12 @@ public static void main(String[] args) {
 
 # 七十 Git 基础
 
-## 1. 密钥
+## 1. 密钥 
 
- * 生成RSA密钥对
+* 生成RSA密钥对
 
-   ```java
-   ssh-keygen -t rsa -C "你的邮箱@xxx.com"
+```
+ssh-keygen -t rsa -C "你的邮箱@xxx.com"
 ```
 
 * 查看  公钥内容
@@ -912,4 +1171,21 @@ systemctl status docker
 
 
 
+
+# 一二零 Mysql 配置
+
+## 1 .配置文件(my.ini)
+
+```java 
+[mysqld]
+basedir=F:\dataBase\mysql-5.7.21-winx64\
+datadir=F:\dataBase\mysql-5.7.21-winx64\data\
+port=3306
+event_scheduler=ON # 开启定时任务
+#basedir表示mysql安装路径
+#datadir表示mysql数据文件存储路径
+#port表示mysql端口
+#skip-grant-tables#表示忽略密码
+max_connections=10000 # 最大连接数量
+```
 
