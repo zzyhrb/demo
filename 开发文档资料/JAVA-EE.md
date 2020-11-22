@@ -984,11 +984,182 @@ console.log(sum2(1,2));
 
 
 
+### 2.对象函数属性简写
+
+```javascript
+  let persion ={
+      name :'测试',
+      //以前
+      eat: function(food){
+          console.log(this.name+"在吃"+food);
+      },
+      //箭头函数不能有this
+      eat2:food =>console.log(persion.name+"在吃"+food),
+
+      eat3 (food){
+          console.log(this.name+"在吃"+food);
+      }
+  }
+
+persion.eat("烧烤");
+persion.eat2("火锅");
+persion.eat3("水果");
 
 
-​	
+
+//数组中新增了map 和 reduce 方法
+//map();接受一个函数,将原来数组中的所有元素用这个函数处理后放入新数组返回；
+let  arr =[1,4,5,6];
+arr =arr.map((item) =>{
+    return item *2;
+})
+
+//简写 
+arr =arr.map(item => item * 2);
+console.log(arr);
 
 
+
+//reduce() 为数组中的每一个元素依次执行回调的函数，不包含数组中呗删除或从未被复制的元素
+        /**
+        1.previousValue(上次调用回调返回的值，或者是提供的初始值(initialValue))
+        2.currentvalue (数组中当前被处理的元素)
+        3.index （当前元素在数组中的索引）
+        4.array (调用reduce 的数组)
+        */
+        let arr = [1,3,45,5];
+        let result =arr.reduce((a,b) =>{
+            console.log("上次处理后:"+a);
+            console.log("当前处理: "+b);
+            return a +b;
+        },100)
+        console.log(result)
+```
+
+
+
+### 3.Promise  使用
+
+```javascript
+  //1.查处当前用户信息
+        //2.按照当前用户id 查处它的课程
+        //3.按照课程id 查出来分出
+   
+
+        //1.promise 可以封装异步操作
+        // let p = new Promise((resolve,reject)=>{
+        //     //1.异步操作
+        //     $.ajax({
+        //           url:"mock/user.json",
+        //           success:function(data){
+        //               console.log("查询用户信息成功",data)
+        //                 resolve(data);
+        //           },
+        //           error:function(err){
+        //                 reject(err);
+        //           }  
+
+        //     })
+        // });
+        // p.then((obj)=>{
+        //     return new Promise((resolve,reject)=>{
+
+        //    $.ajax({
+        //        url:`mock/user_corse_${obj.id}.json`,
+        //        success:function(data){
+        //            console.log("查询课程成功",data);
+        //            resolve(data);
+        //        },
+        //        error(err){
+                   
+        //        }
+        //    })
+        // })
+        // }).then((data)=>{
+        //     console.log("上一步结构是"+data);
+        //     $.ajax({
+        //        url:`mock/corse_score_${data.id}.json`,
+        //        success:function(data){
+        //            console.log("查询课程成功",data);
+                  
+        //        },
+        //        error(err){
+                   
+        //        }
+        //    })
+        // });
+
+
+
+
+
+        function get(url,data){
+           return  new Promise((resolve,reject)=>{
+             $.ajax({
+                url:url,
+                success:function(data){
+                    resolve(data);
+                },
+                error:function(err){
+                    reject(err);
+                }
+             })
+            });
+        }
+
+        get("mock/user.json")
+        .then((data)=>{
+            console.log("用户查询成功111",data)
+            return get(`mock/user_corse_${data.id}.json`);
+        })
+        .then((data)=>{
+            console.log("课程查询成功111",data);
+            return get(`mock/corse_score_${data.id}.json`)
+        })
+        .then((data)=>{
+            console.log("课程成绩查询成功11",data)
+        })
+        .catch((err)=>{
+            console.log("异常")
+        })
+
+
+```
+
+
+
+### 4.模块化
+
+* 导入导出
+
+  ```javascript
+  //导出
+  const util={
+      sum(a,b){
+          return a +b;
+      }
+  }
+  
+  export {util}
+  
+  //导入
+  inport  util from  "./xxx.js"
+  ```
+
+  
+
+
+
+# 六十五 Vue2 
+
+## 1.Vue2 入门安装
+
+```java
+# 1.初始化项目
+ $ npm init -y
+# 2.安装vue 依赖
+ $ npm install vue
+```
 
 
 
