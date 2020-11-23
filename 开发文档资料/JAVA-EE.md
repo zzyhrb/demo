@@ -1360,3 +1360,19 @@ event_scheduler=ON # 开启定时任务
 max_connections=10000 # 最大连接数量
 ```
 
+
+
+# 一三零 ElasticSearch
+
+## 1. ElasticSearch 课程简介
+
+ * 版本ElasticSearch 7.6.1
+
+ * 6.X  7.x 的区别十分大，6.x 的API(原生API,RestFul 高级)
+
+   
+
+***
+
+> wo
+
