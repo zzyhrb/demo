@@ -746,6 +746,16 @@ public static void main(String[] args) {
 
 
 
+## 19. java8 Lambda  
+
+
+
+
+
+
+
+
+
 
 
 
@@ -911,6 +921,41 @@ public static void main(String[] args) {
 
   
 
+> Node Js 安装
+
+* http://nodejs.cn/download/ 
+
+```shell
+C:\Users>node -v  # 查看版本号及是否安装完成
+v14.0.0
+
+C:\Users>npm -v   # 查看包管理器
+6.14.4
+```
+
+> 淘宝镜像
+
+```
+npm install -g cnpm -registry=https://registry.npm.taobao.org
+```
+
+> Babel 的使用
+
+```bash
+npm install -g babel-cli
+
+cnpm install -g babel-cli  # 这个执行下载更快
+```
+
+>webpack 安装
+
+```bash
+npm install -g webpack webpack-cli  安装webpack 依赖
+webpack -v  # 查看是否安装
+
+
+```
+
 
 
 ## 2. 初始化项目
@@ -978,39 +1023,42 @@ public static void main(String[] args) {
 
 * let使用
 
-* 对象属性简写：
+ >总结：
 
-  ```javascript
-  var json={"name":name,"age":age}
-  var json={name,age
-  
-  //获取数组
-  let arr =[1,2,3];
-  let [a,b,c] = arr;
-  console.log(a,b,c);
-  
-  //对象
-  const person ={
-           name : "zzy",
-           age: 13,
-           language:['java','js','css']
-  
-      }
-      //对象解构  
-      const {name:abc,age,language} = person;
-      console.log(name,age,language);
-  
-  
-  
-  ```
-  
+* let 声明的变量不能重复
+* const 声明变量不能修改
+
+> 结构表达式
+
+```javascript
+var json={"name":name,"age":age}
+var json={name,age
+
+//获取数组
+let arr =[1,2,3];
+let [a,b,c] = arr;
+console.log(a,b,c);
+
+//对象
+const person ={
+         name : "zzy",
+         age: 13,
+         language:['java','js','css']
+
+    }
+    //对象解构  
+    const {name:abc,age,language} = person;
+    console.log(name,age,language);
+
+```
+
 * 对象扩展
 
   ```javascript
   let str ="Hello Word";
-  console.log(str.startsWith("Hello"));  
-  console.log(str.endsWith("rd"));  
-  console.log(str.includes("llo"));  
+  console.log(str.startsWith("Hello"));  #判断以Hello 开始的 是返回true
+  console.log(str.endsWith("rd"));    #判断以rd结束的 是返回true
+  console.log(str.includes("llo"));  #是否包含llo 包含返回true
   ```
 
 * 字符串模板
@@ -1041,7 +1089,7 @@ public static void main(String[] args) {
 
  ### 1.使用
 
-```javascript
+```js
 //在Es6 以前，我们无法给一个函数参数设置默认值，只能采用变通的写法。
 function add(a,b){
     //判断b 是否为空，为空就给默认值
@@ -1073,7 +1121,34 @@ var sum2 =(a,b) => a+b;
 
 console.log(sum2(1,2));
 
+=======================================================
+    const persion ={
+        name:"zy",
+        age:18
+    }
+
+// function hello(persion){
+//     console.log(persion.name)
+// }
+
+var hello2 =({name})=>console.log(name);
+
+hello2(persion);
 ```
+
+> 对象优化
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1097,7 +1172,33 @@ console.log(sum2(1,2));
 persion.eat("烧烤");
 persion.eat2("火锅");
 persion.eat3("水果");
+=============================================================
+    1.拷贝对象
+    let p1={name:"Amy",age:15}
+    let someone={...p1}
+    consone.log(someone) // {name:"Amy",age:15}
+=====================================================
+        
+        const persion ={
+                name:"zy",
+                age:18,
+                language:['java','js','css']
+        }
 
+        console.log(Object.keys(persion)); //["name", "age", "language"]
+        console.log(Object.values(persion)); //["zy", 18, Array(3)]
+        console.log(Object.entries(persion)); //[Array(2), Array(2), Array(2)]
+      
+     
+        //对象合并
+        const target ={a:1}
+        const source1 ={b:2}
+        const source2 ={c:3}
+
+        Object .assign(target,source1,source2)
+        console.log(target)
+================================================
+    
 
 
 //数组中新增了map 和 reduce 方法
