@@ -1,5 +1,9 @@
 # Linux 基础
 
+Oracle 账号： 1131725305@qq.com   Meiyoumima1234.
+
+
+
 ## 1.查看文件命令
 
 ```kotlin
@@ -24,7 +28,7 @@ CentOS Linux release 7.4.1708 (Core)
 
 rpm -qa |grep java
 
-rpm -qa |grep jdk
+ 
 
 rpm -qa |grep gcj
 #如果有就使用批量卸载命令
